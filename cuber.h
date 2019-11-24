@@ -1,156 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<title>/cuber.h - Changes - cs311_2019_03 - Project &amp; Software Configuration Management</title>
-<meta name="description" content="Redmine" />
-<meta name="keywords" content="issue,bug,tracker" />
-<meta content="authenticity_token" name="csrf-param" />
-<meta content="iLV//ihAJpnq8qIb5jnNTnoeIFcVWfzFrrBkgkRX6eU=" name="csrf-token" />
-<link rel='shortcut icon' href='/redmine/themes/minimalflat2-Quan/favicon/favicon.ico?1466715572' />
-<link href="/redmine/stylesheets/jquery/jquery-ui-1.11.0.css?1438803640" media="all" rel="stylesheet" type="text/css" />
-<link href="/redmine/themes/minimalflat2-Quan/stylesheets/application.css?1466715571" media="all" rel="stylesheet" type="text/css" />
+// cuber.h
+// Glenn G. Chappell
+// 2019-11-22
+//
+// For CS 311 Fall 2019
+// Header for class Cuber
+// There is no associated source file.
+// For Project 8, Exercise B
 
-<script src="/redmine/javascripts/jquery-1.11.1-ui-1.11.0-ujs-3.1.3.js?1438803640" type="text/javascript"></script>
-<script src="/redmine/javascripts/application.js?1438803640" type="text/javascript"></script>
-<script type="text/javascript">
-//<![CDATA[
-$(window).load(function(){ warnLeavingUnsaved('The current page contains unsaved text that will be lost if you leave this page.'); });
-//]]>
-</script>
-<script src="/redmine/themes/minimalflat2-Quan/javascripts/theme.js?1466715572" type="text/javascript"></script>
-<link href="/redmine/plugin_assets/redmine_agile/stylesheets/redmine_agile.css?1438804327" media="screen" rel="stylesheet" type="text/css" /> <link href="/redmine/plugin_assets/redmine_git_hosting/stylesheets/application.css?1438804327" media="screen" rel="stylesheet" type="text/css" />
-<!-- page specific tags -->
-  <script src="/redmine/javascripts/repository_navigation.js?1438803640" type="text/javascript"></script>
-<link href="/redmine/stylesheets/scm.css?1438803640" media="screen" rel="stylesheet" type="text/css" />
-</head>
-<body class="theme-Minimalflat2-quan project-cs311_2019_03 controller-repositories action-changes">
-<div id="wrapper">
-<div id="wrapper2">
-<div id="wrapper3">
-<div id="top-menu" style="height:2em;">
-    <div id="account">
-        <ul><li><a href="/redmine/login" class="login">Sign in</a></li>
-<li><a href="/redmine/account/register" class="register">Register</a></li></ul>    </div>
-    
-    <ul><li><a href="/redmine/" class="home">Home</a></li>
-<li><a href="/redmine/projects" class="projects">Projects</a></li>
-<li><a href="http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
-
-<div id="header">
-    <div id="quick-search">
-        <form accept-charset="UTF-8" action="/redmine/projects/cs311_2019_03/search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
-        <input name="changesets" type="hidden" value="1" />
-        <label for='q'>
-          <a href="/redmine/projects/cs311_2019_03/search" accesskey="4">Search</a>:
-        </label>
-        <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
-</form>        
-    </div>
-    <br>
-    <h1>cs311_2019_03</h1>
-    <br>
-
-     
+#ifndef FILE_CUBER_H_INCLUDED
+#define FILE_CUBER_H_INCLUDED
 
 
-        <div id="main-menu" style="position:relative;left:10px;margin-bottom:10px;"">
-            <ul><li><a href="/redmine/projects/cs311_2019_03" class="overview">Overview</a></li>
-<li><a href="/redmine/projects/cs311_2019_03/activity" class="activity">Activity</a></li>
-<li><a href="/redmine/projects/cs311_2019_03/repository" class="repository selected">Repository</a></li></ul>
-        </div>
-        <br>
-       
-            <hr>
-</div> 
-            <div id="main" class="nosidebar">
-                <div id="sidebar">
-                    
-                    
-                </div>
-            </div> 
-        <div id="content">
-        
-        
+// class Cuber
+// Class for function objects that return cubes of numbers.
+// Usage:
+//     Cuber c;
+//     cout << c(3);    // Prints "27"
+//     cout << c(1.5);  // Prints "3.375"
+// Class invariants: None.
+class Cuber {
+public:
+    // operator()
+    // Takes a value k and returns its cube.
+    // Requirements on types:
+    //     Num must have binary operator* and copy ctor.
+    // Pre:
+    //     The cube of k must be representable as a value of the same
+    //      type as k.
+    // Throws what & when Num operations throw.
+    // Strong Guarantee
+    // Exception Neutral
+    template<typename Num>
+    Num operator()(const Num & k) const
+    {
+        return k * k * k;
+    }
 
-<div class="contextual">
-  
-<a href="/redmine/projects/cs311_2019_03/repository/statistics" class="icon icon-stats">Statistics</a>
-
-<form accept-charset="UTF-8" action="/redmine/projects/cs311_2019_03/repository/changes/cuber.h" id="revision_selector" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>  <!-- Branches Dropdown -->
-    | Branch: 
-    <select id="branch" name="branch"><option value="">&nbsp;</option>
-<option value="master" selected="selected">master</option></select>
-
-
-    | Revision: 
-    <input id="rev" name="rev" size="8" type="text" value="master" />
-</form>
-</div>
-
-<h2><a href="/redmine/projects/cs311_2019_03/repository/revisions/master/show">cs311_2019_03</a>
-    / <a href="/redmine/projects/cs311_2019_03/repository/changes/cuber.h?rev=master">cuber.h</a>
-@ master
-
-</h2>
+    // We use automatically generated default ctor & Big 5.
+    Cuber() = default;
+    ~Cuber() = default;
+    Cuber(const Cuber &) = default;
+    Cuber(Cuber &&) = default;
+    Cuber & operator=(const Cuber &) = default;
+    Cuber & operator=(Cuber &&) = default;
+};  // End class Cuber
 
 
-<p>
-History |
-    <a href="/redmine/projects/cs311_2019_03/repository/revisions/master/entry/cuber.h">View</a> |
-    <a href="/redmine/projects/cs311_2019_03/repository/revisions/master/annotate/cuber.h">Annotate</a> |
-<a href="/redmine/projects/cs311_2019_03/repository/revisions/master/raw/cuber.h">Download</a>
-(1.22 KB)
-</p>
+#endif //#ifndef FILE_CUBER_H_INCLUDED
 
-
-
-
-
-
-<form accept-charset="UTF-8" action="/redmine/projects/cs311_2019_03/repository/diff/cuber.h" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
-<table class="list changesets">
-<thead><tr>
-<th>#</th>
-<th></th>
-<th></th>
-<th>Date</th>
-<th>Author</th>
-<th>Comment</th>
-</tr></thead>
-<tbody>
-<tr class="changeset odd">
-<td class="id">
-  <a href="/redmine/projects/cs311_2019_03/repository/revisions/4c5c04ff1e7b21ab88d5fb60bdf27c9332ff8171" title="Revision 4c5c04ff">4c5c04ff</a>
-</td><td class="checkbox"></td>
-<td class="checkbox"></td>
-<td class="committed_on">11/22/2019 12:17 PM</td>
-<td class="author">Glenn Chappell</td>
-<td class="comments"><p>Add cuber.h</p></td>
-</tr>
-</tbody>
-</table>
-
-</form>
-
-
-
-        
-        <div style="clear:both;"></div>
-    </div>
-</div>
-</div>
-
-<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
-<div id="ajax-modal" style="display:none;"></div>
-
-<div id="footer">
-  <div class="bgl"><div class="bgr">
-    Powered by <a href="http://www.redmine.org/">Redmine</a> &copy; 2006-2015 Jean-Philippe Lang
-  </div></div>
-</div>
-</div>
-</div>
-
-</body>
-</html>
