@@ -55,6 +55,15 @@ void sortWords(std::vector<std::string> & vectOfFirstWords, const std::map<std::
     std::sort(vectOfFirstWords.begin(), vectOfFirstWords.end());
 }
 
+void sortList(const std::string & i, std::vector<std::string> & vectOfListElements, const std::map<std::string,std::list<std::string>> & tableOfWords)
+{
+    for (auto j : tableOfWords.find(i)->second)
+        {
+            vectOfListElements.push_back(j);
+        }
+        std::sort(vectOfListElements.begin(), vectOfListElements.end()); //sorting the values of the linked lists before printing them
+}
+
 void printWords(std::vector<std::string> & vectOfFirstWords, const std::map<std::string,std::list<std::string>> & tableOfWords, std::ostream & os)
 {
 	os << "Number of distinct words: " << tableOfWords.size() << std::endl;
@@ -62,12 +71,7 @@ void printWords(std::vector<std::string> & vectOfFirstWords, const std::map<std:
 	for (auto i : vectOfFirstWords)
 	{
 		std::vector<std::string> vectOfListElements;
-		for (auto j : tableOfWords.find(i)->second)
-		{
-			vectOfListElements.push_back(j);
-		}
-		std::sort(vectOfListElements.begin(), vectOfListElements.end()); //sorting the values of the linked lists before printing them
-
+        sortList(i,vectOfListElements,tableOfWords);
 		std::cout << i << ": ";
 		for (auto k : vectOfListElements)
 		{
