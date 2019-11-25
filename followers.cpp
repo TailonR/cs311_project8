@@ -21,25 +21,27 @@ int main()
 	getName(filename);
 	if(cleanInput)
 	{
+		std::cout << "Attempting to open " << filename << std::endl;
 		fileReader.open(filename);
 	}
 	else
 	{
-		std::cout << "Failed To Open "<< filename << std::endl;
+		std::cout << "Illegal file name "<< filename << std::endl;
+		return 0;
 	}
 
 	if (!fileReader)
 	{
-		if (fileReader.eof())
-		{
-			std::cout << "File End Reached" << std::endl;
-		}
+		std::cout << "Failed to open "<< filename << std::endl;
+		return 0;
 	}
 	else
 	{
-		insertWords(word, prevWord, fileReader, tableOfWords, followingWordsList);
-		sortWords(vectOfFirstWords, tableOfWords);
-		printWords(vectOfFirstWords, tableOfWords, std::cout);
+		if(!fileReader.eof()){
+			insertWords(word, prevWord, fileReader, tableOfWords, followingWordsList);
+			sortWords(vectOfFirstWords, tableOfWords);
+			printWords(vectOfFirstWords, tableOfWords, std::cout);
+		}
 	}
 	return 0;
 }
